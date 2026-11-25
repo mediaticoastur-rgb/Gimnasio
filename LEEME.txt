@@ -1,0 +1,26 @@
+GYMSTATS PRO V4 – ACTUALIZACIÓN
+
+Incluye:
+- Selector de 2 a 6 días semanales.
+- Pantalla de chat para enviar instrucciones al entrenador IA.
+- Búsqueda automática de imágenes en Wikimedia Commons si se dispone de conexión.
+- Worker de Cloudflare para mantener GEMINI_API_KEY fuera de GitHub Pages.
+
+PUBLICAR WEB EN GITHUB PAGES
+1. Descomprime el ZIP.
+2. En tu repositorio Gym3, sube y sustituye index.html, app.js, style.css y sw.js. Conserva manifest.json y los SVG.
+3. Espera a que GitHub Pages publique la actualización.
+
+ACTIVAR ENTRENADOR IA (NECESITA CONFIGURACIÓN EXTERNA)
+1. En Cloudflare crea un Worker nuevo.
+2. Copia el contenido de worker.js en el editor del Worker y despliega.
+3. En Settings/Variables añade un secreto llamado GEMINI_API_KEY con tu clave de Google AI Studio. No lo pongas en GitHub ni en index.html.
+4. Copia la URL HTTPS del Worker.
+5. Abre GymStats Pro > Ajustes y pega esa URL en “Dirección del Worker”. Guarda.
+6. Abre Mi entrenador y prueba una petición.
+
+IMPORTANTE
+- Esta versión no lleva tu clave API incluida. El entrenador IA solo funcionará tras desplegar el Worker y guardar el secreto.
+- Las llamadas a Gemini pueden estar sujetas a límites y precios del proveedor; revisa tu panel de Google AI Studio.
+- Las fotos se buscan automáticamente en Wikimedia Commons. La búsqueda puede devolver imágenes no exactas; comprueba que representan el ejercicio.
+- Los registros de entrenamiento permanecen en el almacenamiento local del navegador. Exporta tus datos antes de borrar datos del navegador.
